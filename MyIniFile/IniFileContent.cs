@@ -10,7 +10,6 @@ namespace MyIniFile
 {
     public interface IIniFileContentLineHandler
     {
-
         void HandleNoDataLine(IniFileNoMeaningContentLine iniFileNoMeaningContentLine);
 
         void HandleSectionDeclaration(IniFileSectionDeclarationLine iniFileSectionDeclarationLine);

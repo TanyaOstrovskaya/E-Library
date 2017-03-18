@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.ServiceModel;
-using System.ServiceModel.Description;
 using BookList.Interaction;
 using MyIniFile;
 
-namespace Lab1BookList
+namespace ELibrary
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class BookList : IEnumerable<DataBookInfo>, IBookList
@@ -23,11 +18,6 @@ namespace Lab1BookList
             _booklist = new List<DataBookInfo>();
             this.file = file;
         }
-
-        //public List<DataBookInfo> DowlloadAll()
-        //{
-        //    return _booklist;
-        //}
 
         public void AddNewNote(DataBookInfo newNote)
         {
@@ -51,24 +41,24 @@ namespace Lab1BookList
         public SearchingResult[] FindNotesByKeyWords(List<string> KeywordsArray)
         {
             var ListWithResults = new List<SearchingResult>();
-            int countInNode = 0;
-            int countInAnnot = 0;
+            int wordNumberInNote = 0;
+            int wordsNumberInAnnotation = 0;
             foreach (var item in _booklist) 
             {
                 foreach (var word in KeywordsArray) 
                 {
-                    countInNode += CountWordInNote(item, word);
-                    countInAnnot += CountWordInAnnotation(item, word);
+                    wordNumberInNote += CountWordInNote(item, word);
+                    wordsNumberInAnnotation += CountWordInAnnotation(item, word);
                 }
-                if (countInAnnot + countInNode > 0) 
+                if (wordsNumberInAnnotation + wordNumberInNote > 0) 
                 {
-                    SearchingResult nextNode = new SearchingResult(item.name, item.author, item.annotation, item.ISBN, item.publicationDate,
-                    countInAnnot + countInNode,
-                    countInAnnot > 0); 
+                    SearchingResult nextNode = new SearchingResult(item.name, item.author, 
+                                                                   item.annotation, item.ISBN, item.publicationDate,
+                                                                   wordsNumberInAnnotation + wordNumberInNote, wordsNumberInAnnotation > 0); 
                     ListWithResults.Add(nextNode);
                 }
-                countInAnnot = 0;
-                countInNode = 0;
+                wordsNumberInAnnotation = 0;
+                wordNumberInNote = 0;
             }
             return ListWithResults.ToArray();
         }
@@ -77,10 +67,10 @@ namespace Lab1BookList
         {
             int count = 0, index = 0;
             while ((index = node.name.IndexOf(Keyword, index) + 1) != 0)
-                count++;
+                ++count;
             index = 0;
             while ((index = node.author.IndexOf(Keyword, index) + 1) != 0)
-                count++;
+                ++count;
             return count;
         }
 
@@ -88,18 +78,16 @@ namespace Lab1BookList
         {
             int count = 0, index = 0;
             while ((index = node.annotation.IndexOf(Keyword, index) + 1) != 0)
-                count++;
+                ++count;
             return count;
         }
 
         public void SaveNotesInFile()
         {
-            int count = 0;
             foreach (var book in _booklist)
             {
                 if (book != null)
                 {
-                    count++;
                     file.AddSection("Book " + book.ISBN.ToString());
                     file.AddKeyValue("name", book.name);
                     file.AddKeyValue("author", book.author);
@@ -124,12 +112,7 @@ namespace Lab1BookList
             _booklist.Clear();
 
             file = file.ReadFromFile(file.SourceName);
-            //foreach (var line in file)
-            //{
-            //    if (line.)
-            //}
-
-
+          
             foreach (var line in file)
             {
                 if (line is IniFileKeyValueLine)

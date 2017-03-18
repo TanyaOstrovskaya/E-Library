@@ -19,7 +19,7 @@ namespace ClientImplementation
             this.url = url;
         }
 
-        public List<DataBookInfo> DownloadAll()
+        public List <DataBookInfo> DownloadAll()
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
 
@@ -101,7 +101,6 @@ namespace ClientImplementation
             var searchResult = new List<SearchingResult>();
             using (var sr = new StreamReader(response.GetResponseStream()))
             {
-
                 searchResult = jss.Deserialize<List<SearchingResult>>(sr.ReadToEnd());
             }
             return searchResult.ToArray();

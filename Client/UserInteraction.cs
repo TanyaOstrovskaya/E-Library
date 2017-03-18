@@ -102,7 +102,7 @@ namespace Client
 
     static public class UserInteraction
     {
-        static public DataBookInfo EnterNote()    //ввод новой записи 
+        static public DataBookInfo EnterNote()
         {
             Console.WriteLine("Enter name of book:\t");
             string newname = Console.ReadLine();
@@ -116,7 +116,7 @@ namespace Client
           
         }
 
-        static public int EnterISBN()     //ввод и проверка ISBN
+        static public int EnterISBN()  
         {
             int ISBN = 0;
 
@@ -160,14 +160,14 @@ namespace Client
                 if (!isSearchResult)
                     Console.WriteLine("Annotation:\t\t{0}", Node.annotation);
                 Console.WriteLine("ISBN:\t\t\t{0}", Node.ISBN);
-                Console.WriteLine("Publication date:\t{0}", Node.publicationDate.ToLongDateString());
+                Console.WriteLine("Publication date:\t{0}", Node.publicationDate.ToShortDateString());
             }
         }
 
         static public List<string> EnterKeyWords()
         {
             string nextWord;
-            var KeywordsList = new List<string>(); //хранит все введенные ключ. слова 
+            var KeywordsList = new List<string>();
 
             Console.WriteLine("Enter keywords; after every keyword press ENTER; press 'S' to stop:");
             while (true)

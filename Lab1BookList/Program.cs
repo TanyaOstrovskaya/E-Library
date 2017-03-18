@@ -9,7 +9,7 @@ using System.ServiceModel.Web;
 using BookList.Interaction;
 using MyIniFile;
 
-namespace Lab1BookList
+namespace ELibrary
 {
     class Program
     {
@@ -19,9 +19,6 @@ namespace Lab1BookList
             BookList bookList = new BookList(file);
 
             var myBinding = new WebHttpBinding();
-
-            //Server server = new Server("http://127.0.0.1:12345/", bookList, file);                      
-            //server.DoServer();
 
             using(var host = new ServiceHost(bookList, new Uri("http://127.0.0.1:12344/")))
             {

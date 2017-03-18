@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="1" Grid.Column="0" x:Name="keywords" Content="Введите ключевые слова (через пробел):" />
-        <TextBox Grid.Row="2" Grid.Column="0" x:Name="keyword_Text" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+        <TextBox Grid.Row="2" Grid.Column="0" x:Name="keyword_Text" HorizontalAlignment="Left"/>
         <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="okButton" IsDefault="True" Content="ОК" Click="okButton_Click"/>
             <Button x:Name="cancelButton" IsCancel="True" Content="Отмена" Click="cancelButton_Click"/>

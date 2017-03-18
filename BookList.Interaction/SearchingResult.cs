@@ -7,16 +7,15 @@ namespace BookList.Interaction
         public int count { get; private set; }              
         public bool isFromAnnotation { get; private set; }  
 
-        public SearchingResult(string name, string author, string annotation, int ISBN, DateTime publicationDate, int count, bool isFromAnnotation)
+        public SearchingResult(string name, string author, string annotation, int ISBN, 
+                               DateTime publicationDate, int count, bool isFromAnnotation)
             : base(name, author, annotation, ISBN, publicationDate)
         {
             this.count = count;
             this.isFromAnnotation = isFromAnnotation;
         }
 
-        public SearchingResult()
-        {
-        }
+        public SearchingResult() { }
 
         public int CompareTo(object o)  
         {

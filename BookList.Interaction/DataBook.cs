@@ -9,15 +9,14 @@ namespace BookList.Interaction
     [Serializable]
     public class DataBookInfo
     {
-        public string name { get; set; }
-        public string author { get; set; }
-        public string annotation { get; set; }
-        public int ISBN { get; set; }
-        public DateTime publicationDate { get; set; }
+        public string name { get; private set; }
+        public string author { get; private set; }
+        public string annotation { get; private set; }
+        public int ISBN { get; private set; }
+        public DateTime publicationDate { get; private set; }
 
-        public DataBookInfo()
-        {
-        }        
+        public DataBookInfo() { }        
+
         public DataBookInfo(string name, string author, string annotation,
                             int ISBN, DateTime publicationDate)
         {
