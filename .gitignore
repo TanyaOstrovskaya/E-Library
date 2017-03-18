@@ -1,9 +1,11 @@
-./.idea
-./.vs
-./out
+/.idea
+/.vs
+/out
 *.config
 *.csproj
 /*/bin
 /*/obj
 /*/Properties
 /*/Service References
+*.sln
+*.ini
