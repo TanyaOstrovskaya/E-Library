@@ -1,0 +1,9 @@
+./.idea
+./.vs
+./out
+*.config
+*.csproj
+/*/bin
+/*/obj
+/*/Properties
+/*/Service References

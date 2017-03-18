@@ -1,0 +1,45 @@
+﻿<Window x:Class="WPFInteraction.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:my="clr-namespace:WPFInteraction"
+        xmlns:local="clr-namespace:WPFInteraction"
+        mc:Ignorable="d"
+        Title="" Height="356.941" Width="587.465">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Добавить" Command="{Binding AddBookCommand}">
+            </MenuItem>
+            <MenuItem Header="Фильтр" >
+                <MenuItem Header="По номеру" Command="{Binding FindBookByIsbnCommand}" />
+                <MenuItem Header="По ключевым словам" Command="{Binding FindBookByKeywordsCommand}" />
+            </MenuItem>
+            <MenuItem Header="Завершение" >
+                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}"/>
+                <MenuItem Header="Выход" Command="{Binding ExitCommand, RelativeSource={RelativeSource Self}}" />
+            </MenuItem>
+        </Menu>
+        
+        <ListView Grid.Row="1" my:ListViewColumnsAutoSizeHelper.Enabled="True" 
+                  ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook, Mode=TwoWay}" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=name}"  Header="Название"  Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=author}" Header="Автор" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=annotation}" Header="Аннотация" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ISBN}" Header="Книжный номер" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=publicationDate }" Header="Дата" Width="Auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

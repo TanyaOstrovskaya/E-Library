@@ -1,0 +1,29 @@
+﻿<Window x:Class="WPFInteraction.InputKeyWords"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFInteraction"
+        mc:Ignorable="d"
+        Title="" Height="300" Width="300">
+    <Grid Margin="5 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>         
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="1" Grid.Column="0" x:Name="keywords" Content="Введите ключевые слова (через пробел):" />
+        <TextBox Grid.Row="2" Grid.Column="0" x:Name="keyword_Text" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+        <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="okButton" IsDefault="True" Content="ОК" Click="okButton_Click"/>
+            <Button x:Name="cancelButton" IsCancel="True" Content="Отмена" Click="cancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
